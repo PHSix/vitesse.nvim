@@ -1,6 +1,6 @@
 return function(_)
-  local colors = require("colorbuddy.init").colors
-  local Group = require("colorbuddy.init").Group
+  local c = require("vitesse.colorbuddy-like")
+  local colors = c.colors
 
-  Group.new("MiniIndentscopeSymbol", colors.ignored:light():light())
+  c:group("MiniIndentscopeSymbol", colors.ignored)
 end

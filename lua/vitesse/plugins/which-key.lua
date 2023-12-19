@@ -1,5 +1,5 @@
-local colors = require("colorbuddy.init").colors
-local Group = require("colorbuddy.init").Group
+local c = require("vitesse.colorbuddy-like")
+local colors = c.colors
 
-Group.new("WhichKeySeparator", colors.secondaryForeground, colors.none)
-Group.new("WhichKeyDesc", colors.cyan, colors.none)
+c:group("WhichKeySeparator", colors.secondaryForeground, colors.none)
+c:group("WhichKeyDesc", colors.cyan, colors.none)

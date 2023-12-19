@@ -1,13 +1,13 @@
 -- https://github.com/folke/tokyonight.nvim/blob/main/lua/tokyonight/theme.lua#L394
 
 return function(_)
-  local colors = require("colorbuddy.init").colors
-  local Group = require("colorbuddy.init").Group
-  local groups = require("colorbuddy.init").groups
+  local c = require("vitesse.colorbuddy-like")
+  local colors = c.colors
+  local groups = c.groups
 
-  Group.new("AlphaButton", groups.Normal)
-  Group.new("AlphaButtons", groups.AlphaButton)
-  Group.new("AlphaShortcut", colors.orange)
-  Group.new("AlphaHeader", colors.primary)
-  Group.new("AlphaFooter", colors.blue)
+  c:group("AlphaButton", groups.Normal)
+  c:group("AlphaButtons", groups.AlphaButton)
+  c:group("AlphaShortcut", colors.orange)
+  c:group("AlphaHeader", colors.primary)
+  c:group("AlphaFooter", colors.blue)
 end

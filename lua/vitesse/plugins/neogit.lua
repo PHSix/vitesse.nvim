@@ -1,19 +1,19 @@
 return function(_)
-  local colors = require("colorbuddy.init").colors
-  local Group = require("colorbuddy.init").Group
-  local groups = require("colorbuddy.init").groups
+  local c = require("vitesse.colorbuddy-like")
+  local colors = c.colors
+  local groups = c.groups
 
-  Group.new("NeogitDiffAdd", groups.DiffAdd)
-  Group.new("NeogitDiffAddHighlight", groups.NeogitDiffAdd, colors.green:dark():dark())
-  Group.new("NeogitDiffDelete", groups.DiffDelete)
-  Group.new("NeogitDiffDeleteHighlight", groups.NeogitDiffDelete, colors.red:dark():dark():dark())
-  Group.new("NeogitDiffContextHighlight", colors.baseForeground, colors.black1)
+  c:group("NeogitDiffAdd", groups.DiffAdd)
+  c:group("NeogitDiffAddHighlight", groups.NeogitDiffAdd, colors.green)
+  c:group("NeogitDiffDelete", groups.DiffDelete)
+  c:group("NeogitDiffDeleteHighlight", groups.NeogitDiffDelete, colors.red)
+  c:group("NeogitDiffContextHighlight", colors.baseForeground, colors.black1)
 
-  Group.new("NeogitHunkHeader", groups.Normal)
-  Group.new("NeogitHunkHeaderHighlight", groups.Normal)
+  c:group("NeogitHunkHeader", groups.Normal)
+  c:group("NeogitHunkHeaderHighlight", groups.Normal)
 
-  Group.new("NeogitCommandText", groups.Normal)
-  Group.new("NeogitCommandTimeText", groups.Normal)
-  Group.new("NeogitCommandCodeNormal", groups.Normal)
-  Group.new("NeogitCommandCodeError", groups.Error)
+  c:group("NeogitCommandText", groups.Normal)
+  c:group("NeogitCommandTimeText", groups.Normal)
+  c:group("NeogitCommandCodeNormal", groups.Normal)
+  c:group("NeogitCommandCodeError", groups.Error)
 end

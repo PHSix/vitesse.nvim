@@ -1,49 +1,46 @@
 return function(opts)
   local diagnostic_virtual_text_background = opts.diagnostic_virtual_text_background
+  local c = require("vitesse.colorbuddy-like")
 
-  local Group = require("colorbuddy.init").Group
-  local colors = require("colorbuddy.init").colors
-  local groups = require("colorbuddy.init").groups
-  local styles = require("colorbuddy.init").styles
+  local colors = c.colors
+  local groups = c.groups
+  local styles = c.styles
   local link = require("vitesse.utils").highlight_link
 
   -- diagnostics
-  Group.new("DiagnosticError", colors.Error)
-  Group.new("DiagnosticWarn", colors.Warn)
-  Group.new("DiagnosticInfo", colors.Info)
-  Group.new("DiagnosticHint", colors.Hint)
+  c:group("DiagnosticError", colors.Error)
+  c:group("DiagnosticWarn", colors.Warn)
+  c:group("DiagnosticInfo", colors.Info)
+  c:group("DiagnosticHint", colors.Hint)
   -- NOTE: `styles.strikethrough` not working
-  Group.new("DiagnosticDeprecated", groups.Comment, colors.none, styles.italic + styles.underline)
-  Group.new("DiagnosticUnderlineError", colors.none, colors.none, styles.underline)
-  Group.new("DiagnosticUnderlineWarn", colors.none, colors.none, styles.underline)
-  Group.new("DiagnosticUnderlineInfo", colors.none, colors.none, styles.underline)
-  Group.new("DiagnosticUnderlineHint", colors.none, colors.none, styles.underline)
+  c:group("DiagnosticDeprecated", groups.Comment, colors.none, styles.italic)
+  c:group("DiagnosticUnderlineError", colors.none, colors.none, styles.underline)
+  c:group("DiagnosticUnderlineWarn", colors.none, colors.none, styles.underline)
+  c:group("DiagnosticUnderlineInfo", colors.none, colors.none, styles.underline)
+  c:group("DiagnosticUnderlineHint", colors.none, colors.none, styles.underline)
 
-  Group.link("DiagnosticVirtualTextError", groups.DiagnosticError)
-  Group.link("DiagnosticVirtualTextWarn", groups.DiagnosticWarn)
-  Group.link("DiagnosticVirtualTextInfo", groups.DiagnosticInfo)
-  Group.link("DiagnosticVirtualTextHint", groups.DiagnosticHint)
+  c:link("DiagnosticVirtualTextError", groups.DiagnosticError)
+  c:link("DiagnosticVirtualTextWarn", groups.DiagnosticWarn)
+  c:link("DiagnosticVirtualTextInfo", groups.DiagnosticInfo)
+  c:link("DiagnosticVirtualTextHint", groups.DiagnosticHint)
   if diagnostic_virtual_text_background then
-    Group.new("DiagnosticVirtualTextError", groups.DiagnosticVirtualTextError, colors.Error:dark():dark():dark():dark())
-    Group.new(
-      "DiagnosticVirtualTextWarn",
-      groups.DiagnosticVirtualTextWarn,
-      colors.Warn:dark():dark():dark():dark():dark()
-    )
-    Group.new("DiagnosticVirtualTextInfo", groups.DiagnosticVirtualTextInfo, colors.Info:dark():dark():dark():dark())
-    Group.new("DiagnosticVirtualTextHint", groups.DiagnosticVirtualTextHint, colors.Hint:dark():dark():dark())
+    -- NOTE:dark caller
+    c:group("DiagnosticVirtualTextError", groups.DiagnosticVirtualTextError, colors.Error)
+    c:group("DiagnosticVirtualTextWarn", groups.DiagnosticVirtualTextWarn, colors.Warn)
+    c:group("DiagnosticVirtualTextInfo", groups.DiagnosticVirtualTextInfo, colors.Info)
+    c:group("DiagnosticVirtualTextHint", groups.DiagnosticVirtualTextHint, colors.Hint)
   end
 
-  Group.link("DiagnosticTextWarn", groups.Warn)
+  c:link("DiagnosticTextWarn", groups.Warn)
 
   -- lsp
-  Group.new("LspReferenceRead", colors.none, colors.none, styles.underline)
-  Group.link("LspReferenceText", groups.LspReferenceRead)
-  Group.new("LspReferenceWrite", colors.none, colors.none, styles.underline)
-  Group.new("LspFloatWinBorder", colors.primary)
-  Group.new("LspLinesDiagBorder", colors.primary)
-  Group.new("LspCodeLens", groups.Comment) -- lsp hint text, cmp
-  Group.new("LspInfoBorder", groups.FloatBorder)
+  c:group("LspReferenceRead", colors.none, colors.none, styles.underline)
+  c:link("LspReferenceText", groups.LspReferenceRead)
+  c:group("LspReferenceWrite", colors.none, colors.none, styles.underline)
+  c:group("LspFloatWinBorder", colors.primary)
+  c:group("LspLinesDiagBorder", colors.primary)
+  c:group("LspCodeLens", groups.Comment) -- lsp hint text, cmp
+  c:group("LspInfoBorder", groups.FloatBorder)
 
   -- lsp semantic tokens
   link("@lsp.type.comment", "@comment")

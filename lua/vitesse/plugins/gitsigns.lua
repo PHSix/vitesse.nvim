@@ -1,8 +1,8 @@
 -- automatically extend `diffview` by source code already
 
-local Group = require("colorbuddy.init").Group
-local groups = require("colorbuddy.init").groups
+local c = require("vitesse.colorbuddy-like")
+local groups = c.groups
 
-Group.new("GitSignsAdd", groups.DiffAdd)
-Group.new("GitSignsChange", groups.DiffChange)
-Group.new("GitSignsDelete", groups.DiffDelete)
+c:group("GitSignsAdd", groups.DiffAdd)
+c:group("GitSignsChange", groups.DiffChange)
+c:group("GitSignsDelete", groups.DiffDelete)

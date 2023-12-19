@@ -1,9 +1,9 @@
-local colors = require("colorbuddy.init").colors
-local Group = require("colorbuddy.init").Group
-local groups = require("colorbuddy.init").groups
-local styles = require("colorbuddy.init").styles
+local c = require("vitesse.colorbuddy-like")
+local colors = c.colors
+local groups = c.groups
+local styles = c.styles
 
-Group.new("NvimTreeFolderIcon", groups.Folder)
-Group.new("NvimTreeRootFolder", groups.FolderRoot)
-Group.new("NvimTreeImageFile", colors.orange)
-Group.new("NvimTreeSpecialFile", colors.orange, colors.none, styles.bold + styles.underline)
+c:group("NvimTreeFolderIcon", groups.Folder)
+c:group("NvimTreeRootFolder", groups.FolderRoot)
+c:group("NvimTreeImageFile", colors.orange)
+c:group("NvimTreeSpecialFile", colors.orange, colors.none, styles.bold + styles.underline)

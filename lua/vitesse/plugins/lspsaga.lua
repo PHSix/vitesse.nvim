@@ -1,14 +1,14 @@
-local colors = require("colorbuddy.init").colors
-local Group = require("colorbuddy.init").Group
-local groups = require("colorbuddy.init").groups
-local styles = require("colorbuddy.init").styles
+local c = require("vitesse.colorbuddy-like")
+local colors = c.colors
+local groups = c.groups
+local styles = c.styles
 
-Group.new("SagaBorder", groups.FloatBorder)
-Group.new("CodeActionText", colors.yellow)
-Group.new("FinderSelection", colors.primary, colors.none, styles.bold)
-Group.new("RenameNormal", colors.variable)
-Group.link("DiagnosticErrorBorder", groups.Error)
-Group.link("DiagnosticWarnBorder", groups.Warn)
-Group.link("DiagnosticHintBorder", groups.Hint)
-Group.link("DiagnosticInfoBorder", groups.Info)
-Group.link("SagaWinbarSep", groups.Normal)
+c:group("SagaBorder", groups.FloatBorder)
+c:group("CodeActionText", colors.yellow)
+c:group("FinderSelection", colors.primary, colors.none, styles.bold)
+c:group("RenameNormal", colors.variable)
+c:link("DiagnosticErrorBorder", groups.Error)
+c:link("DiagnosticWarnBorder", groups.Warn)
+c:link("DiagnosticHintBorder", groups.Hint)
+c:link("DiagnosticInfoBorder", groups.Info)
+c:link("SagaWinbarSep", groups.Normal)

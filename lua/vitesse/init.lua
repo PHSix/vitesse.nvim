@@ -19,13 +19,7 @@ local defaults = {
   themes = {}, -- override `vitesse_themes`
 }
 
-local M = {
-  Color = require("colorbuddy.init").Color,
-  colors = require("colorbuddy.init").colors,
-  Group = require("colorbuddy.init").Group,
-  groups = require("colorbuddy.init").groups,
-  styles = require("colorbuddy.init").styles,
-}
+local M = {}
 
 function M.setup(user_opts)
   user_opts = user_opts or {}
@@ -45,95 +39,94 @@ function M.load()
   end
 
   vim.g.colors_name = "vitesse"
+  local c = require("vitesse.colorbuddy-like")
 
-  local Color = M.Color
-  local colors = M.colors
-  local Group = M.Group
-  local groups = M.groups
-  local styles = M.styles
+  local colors = c.colors
+  local groups = c.groups
+  local styles = c.styles
 
-  Color.new("bg", vitesse_themes.background)
+  c:color("bg", vitesse_themes.background)
 
-  Color.new("black", vitesse_colors.black)
-  Color.new("black1", vitesse_colors.black1)
-  Color.new("black2", vitesse_colors.black2)
-  Color.new("black3", vitesse_colors.black3)
-  Color.new("white3", vitesse_colors.white3)
-  Color.new("white2", vitesse_colors.white2)
-  Color.new("white1", vitesse_colors.white1)
-  Color.new("white", vitesse_colors.white)
-  Color.new("purple6", vitesse_colors.purple6)
+  c:color("black", vitesse_colors.black)
+  c:color("black1", vitesse_colors.black1)
+  c:color("black2", vitesse_colors.black2)
+  c:color("black3", vitesse_colors.black3)
+  c:color("white3", vitesse_colors.white3)
+  c:color("white2", vitesse_colors.white2)
+  c:color("white1", vitesse_colors.white1)
+  c:color("white", vitesse_colors.white)
+  c:color("purple6", vitesse_colors.purple6)
 
-  Color.new("primary", vitesse_themes.primary)
+  c:color("primary", vitesse_themes.primary)
 
-  Color.new("baseForeground", vitesse_themes.foreground)
-  Color.new("activeForeground", vitesse_themes.activeForeground)
-  Color.new("secondaryForeground", vitesse_themes.secondaryForeground)
-  Color.new("ignored", vitesse_themes.ignored)
-  Color.new("border", vitesse_themes.border)
+  c:color("baseForeground", vitesse_themes.foreground)
+  c:color("activeForeground", vitesse_themes.activeForeground)
+  c:color("secondaryForeground", vitesse_themes.secondaryForeground)
+  c:color("ignored", vitesse_themes.ignored)
+  c:color("border", vitesse_themes.border)
 
-  Color.new("baseBackground", vitesse_themes.background)
-  Color.new("activeBackground", vitesse_themes.activeBackground)
+  c:color("baseBackground", vitesse_themes.background)
+  c:color("activeBackground", vitesse_themes.activeBackground)
 
-  Color.new("lowBackground", vitesse_themes.lowBackground)
-  Color.new("lowActiveBackground", vitesse_themes.lowActiveBackground)
-  Color.new("lowBorder", vitesse_themes.lowBorder)
+  c:color("lowBackground", vitesse_themes.lowBackground)
+  c:color("lowActiveBackground", vitesse_themes.lowActiveBackground)
+  c:color("lowBorder", vitesse_themes.lowBorder)
 
-  Color.new("comment", vitesse_themes.comment)
-  Color.new("string", vitesse_themes.string)
-  Color.new("variable", vitesse_themes.variable)
-  Color.new("keyword", vitesse_themes.keyword)
-  Color.new("number", vitesse_themes.number)
-  Color.new("boolean", vitesse_themes.boolean)
-  Color.new("operator", vitesse_themes.operator)
-  Color.new("func", vitesse_themes.func)
-  Color.new("constant", vitesse_themes.constant)
-  Color.new("class", vitesse_themes.class)
-  Color.new("interface", vitesse_themes.interface)
-  Color.new("type", vitesse_themes.type)
-  Color.new("builtin", vitesse_themes.builtin)
-  Color.new("property", vitesse_themes.property)
-  Color.new("namespace", vitesse_themes.namespace)
-  Color.new("punctuation", vitesse_themes.punctuation)
-  Color.new("decorator", vitesse_themes.decorator)
-  Color.new("regex", vitesse_themes.regex)
+  c:color("comment", vitesse_themes.comment)
+  c:color("string", vitesse_themes.string)
+  c:color("variable", vitesse_themes.variable)
+  c:color("keyword", vitesse_themes.keyword)
+  c:color("number", vitesse_themes.number)
+  c:color("boolean", vitesse_themes.boolean)
+  c:color("operator", vitesse_themes.operator)
+  c:color("func", vitesse_themes.func)
+  c:color("constant", vitesse_themes.constant)
+  c:color("class", vitesse_themes.class)
+  c:color("interface", vitesse_themes.interface)
+  c:color("type", vitesse_themes.type)
+  c:color("builtin", vitesse_themes.builtin)
+  c:color("property", vitesse_themes.property)
+  c:color("namespace", vitesse_themes.namespace)
+  c:color("punctuation", vitesse_themes.punctuation)
+  c:color("decorator", vitesse_themes.decorator)
+  c:color("regex", vitesse_themes.regex)
 
-  Group.new("Comment", colors.comment, colors.none, opts.comment_italics and styles.italic or styles.NONE)
-  Group.new("String", colors.string)
-  Group.new("Variable", colors.variable)
-  Group.new("Keyword", colors.keyword)
-  Group.new("Number", colors.number)
-  Group.new("Boolean", colors.boolean)
-  Group.new("Operator", colors.operator)
-  Group.new("Function", colors.func)
-  Group.new("Constant", colors.constant)
-  Group.new("Class", colors.class)
-  Group.new("Interface", colors.interface)
-  Group.new("Type", colors.type)
-  Group.new("Builtin", colors.builtin)
-  Group.new("Property", colors.property)
-  Group.new("Namespace", colors.namespace)
-  Group.new("Punctuation", colors.punctuation)
-  Group.new("Decorator", colors.decorator)
-  Group.new("Regex", colors.regex)
+  c:group("Comment", colors.comment, colors.none, opts.comment_italics and styles.italic or styles.NONE)
+  c:group("String", colors.string)
+  c:group("Variable", colors.variable)
+  c:group("Keyword", colors.keyword)
+  c:group("Number", colors.number)
+  c:group("Boolean", colors.boolean)
+  c:group("Operator", colors.operator)
+  c:group("Function", colors.func)
+  c:group("Constant", colors.constant)
+  c:group("Class", colors.class)
+  c:group("Interface", colors.interface)
+  c:group("Type", colors.type)
+  c:group("Builtin", colors.builtin)
+  c:group("Property", colors.property)
+  c:group("Namespace", colors.namespace)
+  c:group("Punctuation", colors.punctuation)
+  c:group("Decorator", colors.decorator)
+  c:group("Regex", colors.regex)
 
-  Color.new("green", vitesse_themes.green)
-  Color.new("cyan", vitesse_themes.cyan)
-  Color.new("blue", vitesse_themes.blue)
-  Color.new("red", vitesse_themes.red)
-  Color.new("orange", vitesse_themes.orange)
-  Color.new("yellow", vitesse_themes.yellow)
-  Color.new("magenta", vitesse_themes.magenta)
+  c:color("green", vitesse_themes.green)
+  c:color("cyan", vitesse_themes.cyan)
+  c:color("blue", vitesse_themes.blue)
+  c:color("red", vitesse_themes.red)
+  c:color("orange", vitesse_themes.orange)
+  c:color("yellow", vitesse_themes.yellow)
+  c:color("magenta", vitesse_themes.magenta)
 
-  Color.new("Error", vitesse_themes.red)
-  Color.new("Warn", vitesse_themes.yellow)
-  Color.new("Info", vitesse_themes.blue)
-  Color.new("Hint", vitesse_themes.cyan)
+  c:color("Error", vitesse_themes.red)
+  c:color("Warn", vitesse_themes.yellow)
+  c:color("Info", vitesse_themes.blue)
+  c:color("Hint", vitesse_themes.cyan)
 
-  Group.new("Error", colors.Error)
-  Group.new("Warn", colors.Warn)
-  Group.new("Info", colors.Info)
-  Group.new("Hint", colors.Hint)
+  c:group("Error", colors.Error)
+  c:group("Warn", colors.Warn)
+  c:group("Info", colors.Info)
+  c:group("Hint", colors.Hint)
 
   local normal = {
     fg = colors.baseForeground,
@@ -151,126 +144,126 @@ function M.load()
   if opts.dim_nc then
     normal.nc_fg = colors.secondaryForeground
   end
-  Group.new("Normal", normal.fg, normal.bg)
+  c:group("Normal", normal.fg, normal.bg)
   -- normal non-current text, means non-focus window text
-  Group.new("NormalNC", normal.nc_fg, normal.bg)
+  c:group("NormalNC", normal.nc_fg, normal.bg)
 
   -- pum (popup menu) float
-  Group.new("Pmenu", groups.Normal, normal.float_bg) -- popup menu normal item
-  Group.new("PmenuSel", colors.activeBackground, normal.fg, styles.reverse) -- selected item
-  Group.new("PmenuSbar", colors.black1, colors.none, styles.reverse)
-  Group.new("PmenuThumb", colors.black2, colors.none, styles.reverse)
+  c:group("Pmenu", groups.Normal, normal.float_bg) -- popup menu normal item
+  c:group("PmenuSel", colors.activeBackground, normal.fg, styles.reverse) -- selected item
+  c:group("PmenuSbar", colors.black1, colors.none, styles.reverse)
+  c:group("PmenuThumb", colors.black2, colors.none, styles.reverse)
 
   -- be nice for this float border to be cyan if active
-  Group.new("FloatBorder", colors.lowBorder)
+  c:group("FloatBorder", colors.lowBorder)
 
-  Group.new("LineNr", colors.ignored:light():light(), colors.none, styles.NONE)
-  Group.new("CursorLine", colors.none, colors.lowActiveBackground, styles.NONE)
-  Group.new("CursorLineNr", colors.activeForeground, colors.none, styles.NONE)
-  Group.new("Cursor", colors.black3, colors.secondaryForeground, styles.NONE)
-  Group.link("lCursor", groups.Cursor)
-  Group.link("TermCursor", groups.Cursor)
-  Group.new("TermCursorNC", colors.black3, colors.activeBackground)
+  c:group("LineNr", colors.ignored, colors.none, styles.NONE)
+  c:group("CursorLine", colors.none, colors.lowActiveBackground, styles.NONE)
+  c:group("CursorLineNr", colors.activeForeground, colors.none, styles.NONE)
+  c:group("Cursor", colors.black3, colors.secondaryForeground, styles.NONE)
+  c:link("lCursor", groups.Cursor)
+  c:link("TermCursor", groups.Cursor)
+  c:group("TermCursorNC", colors.black3, colors.activeBackground)
 
-  Group.link("Identifier", groups.Property)
+  c:link("Identifier", groups.Property)
 
   -- any statement, conditional, repeat (for, do while), label, operator
-  Group.new("Statement", colors.green)
-  Group.new("PreProc", colors.red) -- was orange
-  Group.new("Special", colors.property) -- was red
-  Group.new("SpecialKey", colors.property)
-  Group.new("Underlined", colors.red)
-  Group.new("Strikethrough", colors.activeBackground, colors.none, styles.strikethrough)
-  Group.new("Ignore", groups.Comment)
-  Group.new("Todo", colors.blue)
+  c:group("Statement", colors.green)
+  c:group("PreProc", colors.red) -- was orange
+  c:group("Special", colors.property) -- was red
+  c:group("SpecialKey", colors.property)
+  c:group("Underlined", colors.red)
+  c:group("Strikethrough", colors.activeBackground, colors.none, styles.strikethrough)
+  c:group("Ignore", groups.Comment)
+  c:group("Todo", colors.blue)
 
-  Group.link("Include", groups.PreProc)
-  Group.link("Macro", groups.PreProc)
-  Group.link("Delimiter", groups.Special)
-  Group.link("Repeat", groups.Statement)
-  Group.link("Conditional", groups.Statement)
-  Group.link("Define", groups.PreProc)
-  Group.link("Character", groups.Constant)
-  Group.link("Float", groups.Constant)
-  Group.link("Debug", groups.Special)
-  Group.link("Label", groups.Statement)
-  Group.link("Exception", groups.Statement)
-  Group.link("StorageClass", groups.Type)
+  c:link("Include", groups.PreProc)
+  c:link("Macro", groups.PreProc)
+  c:link("Delimiter", groups.Special)
+  c:link("Repeat", groups.Statement)
+  c:link("Conditional", groups.Statement)
+  c:link("Define", groups.PreProc)
+  c:link("Character", groups.Constant)
+  c:link("Float", groups.Constant)
+  c:link("Debug", groups.Special)
+  c:link("Label", groups.Statement)
+  c:link("Exception", groups.Statement)
+  c:link("StorageClass", groups.Type)
 
-  Group.link("SpecialChar", groups.Special)
-  Group.new("SpecialKey", colors.black3, colors.black1, styles.bold)
-  Group.link("String", groups.String)
-  Group.new("NonText", colors.black3, colors.none, styles.bold)
-  Group.new("StatusLine", colors.lowBackground, colors.black1, styles.reverse)
-  Group.new("StatusLineNC", colors.lowActiveBackground, colors.black1, styles.reverse)
-  Group.new("Visual", colors.none, colors.black3, opts.reverse_visual and styles.reverse or styles.none)
-  Group.new("Directory", colors.blue)
-  Group.new("ErrorMsg", colors.red, colors.none, styles.reverse)
+  c:link("SpecialChar", groups.Special)
+  c:group("SpecialKey", colors.black3, colors.black1, styles.bold)
+  c:link("String", groups.String)
+  c:group("NonText", colors.black3, colors.none, styles.bold)
+  c:group("StatusLine", colors.lowBackground, colors.black1, styles.reverse)
+  c:group("StatusLineNC", colors.lowActiveBackground, colors.black1, styles.reverse)
+  c:group("Visual", colors.none, colors.black3, opts.reverse_visual and styles.reverse or styles.none)
+  c:group("Directory", colors.blue)
+  c:group("ErrorMsg", colors.red, colors.none, styles.reverse)
 
-  Group.new("IncSearch", colors.orange, colors.none, styles.standout)
-  Group.new("Search", colors.yellow, colors.none, styles.reverse)
+  c:group("IncSearch", colors.orange, colors.none, styles.standout)
+  c:group("Search", colors.yellow, colors.none, styles.reverse)
 
-  Group.new("MoreMsg", colors.blue, colors.none, styles.NONE)
-  Group.new("ModeMsg", colors.blue, colors.none, styles.NONE)
-  Group.new("Question", colors.cyan, colors.none, styles.bold)
-  Group.new("VertSplit", colors.black3, colors.none, styles.NONE)
-  Group.new("Title", colors.orange, colors.none, styles.bold)
-  Group.new("VisualNOS", colors.none, colors.black1, styles.reverse)
-  Group.new("WarningMsg", groups.Warn)
-  Group.new("WildMenu", colors.baseForeground, colors.black1, styles.reverse)
-  Group.new("Folded", colors.secondaryForeground, colors.black1, styles.bold, colors.black3)
-  Group.new("FoldColumn", colors.secondaryForeground, colors.black1)
+  c:group("MoreMsg", colors.blue, colors.none, styles.NONE)
+  c:group("ModeMsg", colors.blue, colors.none, styles.NONE)
+  c:group("Question", colors.cyan, colors.none, styles.bold)
+  c:group("VertSplit", colors.black3, colors.none, styles.NONE)
+  c:group("Title", colors.orange, colors.none, styles.bold)
+  c:group("VisualNOS", colors.none, colors.black1, styles.reverse)
+  c:group("WarningMsg", groups.Warn)
+  c:group("WildMenu", colors.baseForeground, colors.black1, styles.reverse)
+  c:group("Folded", colors.secondaryForeground, colors.black1, styles.bold, colors.black3)
+  c:group("FoldColumn", colors.secondaryForeground, colors.black1)
 
-  Group.new("SignColumn", colors.secondaryForeground, colors.none, styles.NONE)
-  Group.new("Conceal", colors.blue, colors.none, styles.NONE)
+  c:group("SignColumn", colors.secondaryForeground, colors.none, styles.NONE)
+  c:group("Conceal", colors.blue, colors.none, styles.NONE)
 
-  Group.new("SpellBad", colors.none, colors.none, styles.undercurl, colors.red)
-  Group.new("SpellCap", colors.none, colors.none, styles.undercurl, colors.purple6)
-  Group.new("SpellRare", colors.none, colors.none, styles.undercurl, colors.cyan)
-  Group.new("SpellLocal", colors.none, colors.none, styles.undercurl, colors.yellow)
+  c:group("SpellBad", colors.none, colors.none, styles.undercurl, colors.red)
+  c:group("SpellCap", colors.none, colors.none, styles.undercurl, colors.purple6)
+  c:group("SpellRare", colors.none, colors.none, styles.undercurl, colors.cyan)
+  c:group("SpellLocal", colors.none, colors.none, styles.undercurl, colors.yellow)
 
-  Group.new("MatchParen", colors.red, colors.activeBackground, styles.bold)
+  c:group("MatchParen", colors.red, colors.activeBackground, styles.bold)
 
   -- vim highlighting
-  Group.link("vimVar", groups.Identifier)
-  Group.link("vimFunc", groups.Identifier)
-  Group.link("vimUserFunc", groups.Identifier)
-  Group.link("helpSpecial", groups.Special)
-  Group.link("vimSet", groups.Normal)
-  Group.link("vimSetEqual", groups.Normal)
-  Group.new("vimCommentString", colors.purple6)
-  Group.new("vimCommand", colors.yellow)
-  Group.new("vimCmdSep", colors.blue, colors.NONE, styles.bold)
-  Group.new("helpExample", colors.baseForeground)
-  Group.new("helpOption", colors.cyan)
-  Group.new("helpNote", colors.magenta)
-  Group.new("helpVim", colors.magenta)
-  Group.new("helpHyperTextJump", colors.blue, colors.NONE, styles.underline)
-  Group.new("helpHyperTextEntry", colors.green)
-  Group.new("vimIsCommand", colors.black3)
-  Group.new("vimSynMtchOpt", colors.yellow)
-  Group.new("vimSynType", colors.cyan)
-  Group.new("vimHiLink", colors.blue)
-  Group.new("vimGroup", colors.blue, colors.NONE, styles.underline + styles.bold)
+  c:link("vimVar", groups.Identifier)
+  c:link("vimFunc", groups.Identifier)
+  c:link("vimUserFunc", groups.Identifier)
+  c:link("helpSpecial", groups.Special)
+  c:link("vimSet", groups.Normal)
+  c:link("vimSetEqual", groups.Normal)
+  c:group("vimCommentString", colors.purple6)
+  c:group("vimCommand", colors.yellow)
+  c:group("vimCmdSep", colors.blue, colors.NONE, styles.bold)
+  c:group("helpExample", colors.baseForeground)
+  c:group("helpOption", colors.cyan)
+  c:group("helpNote", colors.magenta)
+  c:group("helpVim", colors.magenta)
+  c:group("helpHyperTextJump", colors.blue, colors.NONE, styles.underline)
+  c:group("helpHyperTextEntry", colors.green)
+  c:group("vimIsCommand", colors.black3)
+  c:group("vimSynMtchOpt", colors.yellow)
+  c:group("vimSynType", colors.cyan)
+  c:group("vimHiLink", colors.blue)
+  c:group("vimGroup", colors.blue, colors.NONE, styles.underline)
 
   -- diff
-  Group.new("DiffAdd", colors.green, colors.none, styles.bold, colors.green)
-  Group.new("DiffChange", colors.orange, colors.none, styles.bold, colors.orange)
-  Group.new("DiffDelete", colors.red, colors.none, styles.bold, colors.red)
-  Group.new("DiffText", colors.blue, colors.none, styles.bold, colors.blue)
+  c:group("DiffAdd", colors.green, colors.none, styles.bold, colors.green)
+  c:group("DiffChange", colors.orange, colors.none, styles.bold, colors.orange)
+  c:group("DiffDelete", colors.red, colors.none, styles.bold, colors.red)
+  c:group("DiffText", colors.blue, colors.none, styles.bold, colors.blue)
 
   -- alias ui
-  Group.new("Folder", colors.orange)
-  Group.new("FolderRoot", colors.blue)
+  c:group("Folder", colors.orange)
+  c:group("FolderRoot", colors.blue)
 
-  -- plugins
+  -- -- plugins
 
   -- treesitter, important
   require("vitesse.plugins.treesitter")(opts)
   -- lsp
   require("vitesse.plugins.lsp")(opts)
   -- neomake
-  require("vitesse.plugins.neomake")
+  -- require("vitesse.plugins.neomake")
   -- gitgutter
   require("vitesse.plugins.gitgutter")
   -- gitsigns
@@ -282,32 +275,33 @@ function M.load()
   -- telescope
   require("vitesse.plugins.telescope")(opts, { normal = normal })
   -- neogit
-  require("vitesse.plugins.neogit")(opts)
+  -- require("vitesse.plugins.neogit")(opts)
   -- Primeagen/harpoon
-  require("vitesse.plugins.harpoon")
+  -- require("vitesse.plugins.harpoon")
   -- nvim-tree/nvim-tree.lua
-  require("vitesse.plugins.nvim-tree")
+  -- require("vitesse.plugins.nvim-tree")
   -- phaazon/hop.nvim
-  require("vitesse.plugins.hop")
+  -- require("vitesse.plugins.hop")
   -- j-hui/fidget
   require("vitesse.plugins.fidget")
   -- lukas-reineke/indent-blankline.nvim
-  require("vitesse.plugins.indent-blankline")
+  -- require("vitesse.plugins.indent-blankline")
   -- folke/which-key.nvim
-  require("vitesse.plugins.which-key")
+  -- require("vitesse.plugins.which-key")
   -- folke/noice.nvim
-  require("vitesse.plugins.noice")(opts, { normal = normal })
+  -- require("vitesse.plugins.noice")(opts, { normal = normal })
   -- neo-tree
   require("vitesse.plugins.neo-tree")(opts)
   -- alpha
-  require("vitesse.plugins.alpha")(opts)
+  -- require("vitesse.plugins.alpha")(opts)
   -- echasnovski/mini.indentscope
   require("vitesse.plugins.mini-indentscope")(opts)
   -- vim-illuminate
-  require("vitesse.plugins.illuminate")(opts)
+  -- require("vitesse.plugins.illuminate")(opts)
   -- seblj/nvim-tabline
-  require("vitesse.plugins.tabline")(opts, { normal = normal })
+  -- require("vitesse.plugins.tabline")(opts, { normal = normal })
 
+  c:bootstrap()
   return M
 end
 

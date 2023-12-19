@@ -1,5 +1,5 @@
-local colors = require("colorbuddy.init").colors
-local Group = require("colorbuddy.init").Group
+local c = require("vitesse.colorbuddy-like")
+local colors = c.colors
 
-Group.new("FidgetTitle", colors.magenta)
-Group.new("FidgetTask", colors.secondaryForeground)
+c:group("FidgetTitle", colors.magenta)
+c:group("FidgetTask", colors.secondaryForeground)

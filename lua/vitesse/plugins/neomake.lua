@@ -1,7 +1,7 @@
-local colors = require("colorbuddy.init").colors
-local Group = require("colorbuddy.init").Group
+local c = require("vitesse.colorbuddy-like")
+local colors = c.colors
 
-Group.new("NeomakeErrorSign", colors.orange)
-Group.new("NeomakeWarningSign", colors.yellow)
-Group.new("NeomakeMessageSign", colors.cyan)
-Group.new("NeomakeNeomakeInfoSign", colors.green)
+c:group("NeomakeErrorSign", colors.orange)
+c:group("NeomakeWarningSign", colors.yellow)
+c:group("NeomakeMessageSign", colors.cyan)
+c:group("NeomakeNeomakeInfoSign", colors.green)

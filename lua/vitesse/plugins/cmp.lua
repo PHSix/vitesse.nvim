@@ -1,32 +1,31 @@
 return function(opts)
-  local Color = require("colorbuddy.init").Color
-  local colors = require("colorbuddy.init").colors
-  local Group = require("colorbuddy.init").Group
-  local groups = require("colorbuddy.init").groups
-  local styles = require("colorbuddy.init").styles
+  local c = require("vitesse.colorbuddy-like")
+  local colors = c.colors
+  local groups = c.groups
+  local styles = c.styles
   local link = require("vitesse.utils").highlight_link
 
-  Color.new("codeium", "#09B6A2")
+  c:color("codeium", "#09B6A2")
 
-  Group.new("CmpItemKind", colors.green)
-  Group.new("CmpItemMenu", colors.secondaryForeground)
-  -- Group.new('CmpItemAbbr', colors.secondaryForeground, colors.none, styles.none)
-  -- Group.new('CmpItemAbbrMatch', colors.secondaryForeground, colors.none, styles.none)
-  Group.new("CmpItemAbbrMatch", colors.blue, colors.none, styles.none)
-  Group.new("CmpItemAbbrMatchFuzzy", groups.CmpItemAbbrMatch)
-  Group.new("CmpItemAbbrDeprecated", groups.DiagnosticDeprecated, colors.none, styles.strikethrough)
-  Group.new("CmpItemKindModule", colors.green, colors.none, styles.none)
-  Group.new("CmpItemKindUnit", colors.orange, colors.none, styles.none)
-  Group.new("CmpItemKindValue", colors.cyan, colors.none, styles.none)
-  Group.new("CmpItemKindEnum", colors.yellow, colors.none, styles.none)
-  Group.new("CmpItemKindSnippet", colors.magenta, colors.none, styles.none)
-  Group.new("CmpItemKindColor", colors.magenta, colors.none, styles.none)
-  Group.new("CmpItemKindFile", colors.purple6, colors.none, styles.none)
-  Group.new("CmpItemKindFolder", colors.purple6, colors.none, styles.none)
-  Group.new("CmpItemKindStruct", colors.yellow, colors.none, styles.none)
-  Group.new("CmpItemKindEvent", colors.orange, colors.none, styles.none)
-  Group.new("CmpItemKindCodeium", colors.codeium, colors.none, styles.none)
-  Group.new("CmpItemKindDefault", colors.blue, colors.none, styles.none)
+  c:group("CmpItemKind", colors.green)
+  c:group("CmpItemMenu", colors.secondaryForeground)
+  -- c:group('CmpItemAbbr', colors.secondaryForeground, colors.none, styles.none)
+  -- c:group('CmpItemAbbrMatch', colors.secondaryForeground, colors.none, styles.none)
+  c:group("CmpItemAbbrMatch", colors.blue, colors.none, styles.none)
+  c:group("CmpItemAbbrMatchFuzzy", groups.CmpItemAbbrMatch)
+  c:group("CmpItemAbbrDeprecated", groups.DiagnosticDeprecated, colors.none, styles.strikethrough)
+  c:group("CmpItemKindModule", colors.green, colors.none, styles.none)
+  c:group("CmpItemKindUnit", colors.orange, colors.none, styles.none)
+  c:group("CmpItemKindValue", colors.cyan, colors.none, styles.none)
+  c:group("CmpItemKindEnum", colors.yellow, colors.none, styles.none)
+  c:group("CmpItemKindSnippet", colors.magenta, colors.none, styles.none)
+  c:group("CmpItemKindColor", colors.magenta, colors.none, styles.none)
+  c:group("CmpItemKindFile", colors.purple6, colors.none, styles.none)
+  c:group("CmpItemKindFolder", colors.purple6, colors.none, styles.none)
+  c:group("CmpItemKindStruct", colors.yellow, colors.none, styles.none)
+  c:group("CmpItemKindEvent", colors.orange, colors.none, styles.none)
+  c:group("CmpItemKindCodeium", colors.codeium, colors.none, styles.none)
+  c:group("CmpItemKindDefault", colors.blue, colors.none, styles.none)
 
   link("CmpItemKindText", "@text")
   link("CmpItemKindMethod", "@method")
@@ -51,7 +50,7 @@ return function(opts)
       pattern = "*",
       group = group,
       callback = function()
-        Group.new("Search", colors.none, colors.none, styles.none)
+        c:group("Search", colors.none, colors.none, styles.none)
       end,
     })
 
@@ -60,7 +59,7 @@ return function(opts)
       group = group,
       callback = function()
         -- init.lua
-        Group.new("Search", colors.yellow, colors.none, styles.reverse)
+        c:group("Search", colors.yellow, colors.none, styles.reverse)
       end,
     })
   end

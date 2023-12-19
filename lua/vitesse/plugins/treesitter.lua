@@ -1,107 +1,107 @@
 return function(_)
-  local Group = require("colorbuddy.init").Group
-  local colors = require("colorbuddy.init").colors
-  local groups = require("colorbuddy.init").groups
-  local styles = require("colorbuddy.init").styles
+  local c = require("vitesse.colorbuddy-like")
+  local colors = c.colors
+  local groups = c.groups
+  local styles = c.styles
   local link = require("vitesse.utils").highlight_link
 
-  Group.new("@tag", colors.green)
-  Group.new("@tag.attribute", colors.property)
-  Group.new("@tag.delimiter", colors.punctuation)
+  c:group("@tag", colors.green)
+  c:group("@tag.attribute", colors.property)
+  c:group("@tag.delimiter", colors.punctuation)
 
-  Group.new("@none", colors.none)
-  Group.link("@comment", groups.Comment)
-  Group.link("@error", groups.Error)
-  Group.link("@preproc", groups.PreProc)
-  Group.link("@define", groups.Define)
-  Group.link("@operator", groups.Operator)
+  c:group("@none", colors.none)
+  c:link("@comment", groups.Comment)
+  c:link("@error", groups.Error)
+  c:link("@preproc", groups.PreProc)
+  c:link("@define", groups.Define)
+  c:link("@operator", groups.Operator)
 
-  Group.new("@punctuation", colors.punctuation)
-  Group.link("@punctuation.delimiter", groups.Delimiter)
-  Group.new("@punctuation.bracket", colors.cyan)
-  Group.link("@punctuation.special", groups.Builtin)
+  c:group("@punctuation", colors.punctuation)
+  c:link("@punctuation.delimiter", groups.Delimiter)
+  c:group("@punctuation.bracket", colors.cyan)
+  c:link("@punctuation.special", groups.Builtin)
 
-  Group.link("@string", groups.String)
-  Group.link("@string.regex", groups.Regex)
-  Group.link("@string.escape", groups.String)
-  Group.link("@string.special", groups.Special)
+  c:link("@string", groups.String)
+  c:link("@string.regex", groups.Regex)
+  c:link("@string.escape", groups.String)
+  c:link("@string.special", groups.Special)
 
-  Group.link("@character", groups.Character)
-  Group.link("@character.special", groups.Special)
+  c:link("@character", groups.Character)
+  c:link("@character.special", groups.Special)
 
-  Group.link("@boolean", groups.Builtin)
-  Group.link("@number", groups.Number)
-  Group.link("@float", groups.Float)
+  c:link("@boolean", groups.Builtin)
+  c:link("@number", groups.Number)
+  c:link("@float", groups.Float)
 
-  Group.link("@function", groups.Function)
-  Group.link("@function.call", groups.Function)
-  Group.link("@function.builtin", groups.Function)
-  Group.link("@function.macro", groups.Macro)
+  c:link("@function", groups.Function)
+  c:link("@function.call", groups.Function)
+  c:link("@function.builtin", groups.Function)
+  c:link("@function.macro", groups.Macro)
 
-  Group.link("@method", groups.Function)
-  Group.link("@method.call", groups.Function)
+  c:link("@method", groups.Function)
+  c:link("@method.call", groups.Function)
 
-  Group.link("@constructor", groups.Function)
+  c:link("@constructor", groups.Function)
 
   link("@parameter", "@variable")
 
-  Group.link("@keyword", groups.Keyword)
-  Group.link("@keyword.function", groups.Operator)
-  Group.link("@keyword.operator", groups.Operator)
-  Group.link("@keyword.coroutine", groups.Operator)
+  c:link("@keyword", groups.Keyword)
+  c:link("@keyword.function", groups.Operator)
+  c:link("@keyword.operator", groups.Operator)
+  c:link("@keyword.coroutine", groups.Operator)
 
-  Group.link("@conditional", groups.Conditional)
-  Group.link("@repeat", groups.Repeat)
-  Group.link("@debug", groups.Debug)
-  Group.link("@label", groups.Label)
+  c:link("@conditional", groups.Conditional)
+  c:link("@repeat", groups.Repeat)
+  c:link("@debug", groups.Debug)
+  c:link("@label", groups.Label)
   link("@include", "@keyword")
-  Group.link("@exception", groups.Exception)
+  c:link("@exception", groups.Exception)
 
-  Group.link("@type", groups.Type)
-  Group.link("@type.builtin", groups.Type)
-  Group.link("@type.qualifier", groups.Builtin)
-  Group.link("@type.definition", groups.Type)
+  c:link("@type", groups.Type)
+  c:link("@type.builtin", groups.Type)
+  c:link("@type.qualifier", groups.Builtin)
+  c:link("@type.definition", groups.Type)
   link("@type.javascript", "@variable")
 
-  Group.link("@storageclass", groups.Keyword)
-  Group.link("@attribute", groups.Function)
+  c:link("@storageclass", groups.Keyword)
+  c:link("@attribute", groups.Function)
   link("@field", "@property")
-  Group.link("@property", groups.Property)
+  c:link("@property", groups.Property)
 
-  Group.new("@variable", colors.variable)
-  Group.link("@variable.builtin", groups.Variable)
+  c:group("@variable", colors.variable)
+  c:link("@variable.builtin", groups.Variable)
 
-  Group.link("@constant", groups.Constant)
-  Group.link("@constant.builtin", groups.Constant)
-  Group.link("@constant.macro", groups.Constant)
+  c:link("@constant", groups.Constant)
+  c:link("@constant.builtin", groups.Constant)
+  c:link("@constant.macro", groups.Constant)
 
-  Group.link("@namespace", groups.Namespace)
-  Group.link("@symbol", groups.Identifier)
+  c:link("@namespace", groups.Namespace)
+  c:link("@symbol", groups.Identifier)
 
-  Group.link("@text", groups.Normal)
-  Group.new("@text.strong", colors.baseForeground, colors.none, styles.bold)
-  Group.new("@text.emphasis", colors.white, colors.none, styles.bold)
-  Group.link("@text.underline", groups.Underlined)
-  Group.link("@text.strike", groups.Strikethrough)
-  Group.link("@text.title", groups.Title)
-  Group.link("@text.literal", groups.String)
-  Group.link("@text.uri", groups.Underlined)
-  Group.link("@text.math", groups.Special)
-  Group.link("@text.environment", groups.Macro)
-  Group.link("@text.environment.name", groups.Type)
-  Group.link("@text.reference", groups.String)
-  Group.link("@text.todo", groups.Todo)
-  Group.new("@text.note", colors.cyan)
-  Group.link("@text.warning", groups.Warn)
-  Group.new("@text.danger", groups.Error)
+  c:link("@text", groups.Normal)
+  c:group("@text.strong", colors.baseForeground, colors.none, styles.bold)
+  c:group("@text.emphasis", colors.white, colors.none, styles.bold)
+  c:link("@text.underline", groups.Underlined)
+  c:link("@text.strike", groups.Strikethrough)
+  c:link("@text.title", groups.Title)
+  c:link("@text.literal", groups.String)
+  c:link("@text.uri", groups.Underlined)
+  c:link("@text.math", groups.Special)
+  c:link("@text.environment", groups.Macro)
+  c:link("@text.environment.name", groups.Type)
+  c:link("@text.reference", groups.String)
+  c:link("@text.todo", groups.Todo)
+  c:group("@text.note", colors.cyan)
+  c:link("@text.warning", groups.Warn)
+  c:group("@text.danger", groups.Error)
 
   -- filetypes
 
   -- tsx
-  Group.new("@constructor.tsx", colors.property)
+  c:group("@constructor.tsx", colors.property)
 
   -- ecosystems
 
   -- treesitter-context
-  Group.link("TreesitterContext", groups.CursorLine)
+  c:link("TreesitterContext", groups.CursorLine)
 end

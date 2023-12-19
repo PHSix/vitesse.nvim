@@ -1,7 +1,6 @@
-local colors = require("colorbuddy.init").colors
-local Group = require("colorbuddy.init").Group
-local groups = require("colorbuddy.init").groups
+local c = require("vitesse.colorbuddy-like")
+local colors = c.colors
+local groups = c.groups
 
-
-Group.new("HarpoonBorder", colors.cyan)
-Group.new("HarpoonWindow", groups.Normal)
+c:group("HarpoonBorder", colors.cyan)
+c:group("HarpoonWindow", groups.Normal)

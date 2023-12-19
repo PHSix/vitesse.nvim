@@ -1,8 +1,8 @@
-local colors = require("colorbuddy.init").colors
-local Group = require("colorbuddy.init").Group
+local c = require("vitesse.colorbuddy-like")
+local colors = c.colors
 
-Group.new("IndentBlanklineChar", colors.black2)
-Group.new("IndentBlanklineContextChar", colors.secondaryForeground)
-Group.new("IndentBlanklineContextStart", colors.secondaryForeground)
-Group.new("IndentBlanklineSpaceChar", colors.black2)
-Group.new("IndentBlanklineSpaceCharBlankline", colors.black2)
+c:group("IndentBlanklineChar", colors.black2)
+c:group("IndentBlanklineContextChar", colors.secondaryForeground)
+c:group("IndentBlanklineContextStart", colors.secondaryForeground)
+c:group("IndentBlanklineSpaceChar", colors.black2)
+c:group("IndentBlanklineSpaceCharBlankline", colors.black2)

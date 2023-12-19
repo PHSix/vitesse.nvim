@@ -1,7 +1,7 @@
-local colors = require("colorbuddy.init").colors
-local Group = require("colorbuddy.init").Group
+local c = require("vitesse.colorbuddy-like")
+local colors = c.colors
 
-Group.new("GitGutterAdd", colors.green)
-Group.new("GitGutterChange", colors.yellow)
-Group.new("GitGutterDelete", colors.red)
-Group.new("GitGutterChangeDelete", colors.red)
+c:group("GitGutterAdd", colors.green)
+c:group("GitGutterChange", colors.yellow)
+c:group("GitGutterDelete", colors.red)
+c:group("GitGutterChangeDelete", colors.red)
